@@ -256,14 +256,17 @@ class StockTradingEnv(gym.Env):
                     ),
                     index=False,
                 )
-                plt.plot(self.asset_memory, "r")
-                plt.savefig(
-                    "results/account_value_{}_{}_{}.png".format(
-                        self.mode, self.model_name, self.iteration
-                    ),
-                    index=False,
-                )
-                plt.close()
+                try:
+                    plt.plot(self.asset_memory, "r")
+                    plt.savefig(
+                        "results/account_value_{}_{}_{}.png".format(
+                            self.mode, self.model_name, self.iteration
+                        ),
+                        index=False,
+                    )
+                    plt.close()
+                except:
+                    pass
 
             # Add outputs to logger interface
             # logger.record("environment/portfolio_value", end_total_asset)
